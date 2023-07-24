@@ -41,7 +41,7 @@
   }
 </style>
 
-<body>
+
   <header>
     <nav>
       <div class="logo">
@@ -68,6 +68,8 @@
                   {{ user.username }}
                   </a>
                   <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item" href="{% url 'car_add' %}">Alta vehículo</a></li>
+                    <li>
                     <li><a class="dropdown-item" href="{% url 'account_change_password' %}">Cambiar contraseña</a></li>
                    <li>
                      <hr class="dropdown-divider">
@@ -118,7 +120,7 @@
     </div>
   </div>
 </div>
-
+<body>
   <div class="container">
     {% block content %}
 

@@ -14,7 +14,9 @@
 			<div class="filter-options">
 				<ul>
 					<li><a href="{% url 'car_list' %}">Todos</a></li>
-
+					<li><a href="{% url 'car_list' %}?category=1">Autos</a></li>
+					<li><a href="{% url 'car_list' %}?category=2">Pickups y Comerciales</a></li>
+					<li><a href="{% url 'car_list' %}?category=3">SUVs y Crossovers</a></li>
 				</ul>
 			</div>
 		</div>
@@ -22,15 +24,15 @@
 		<div class="order-by">
 			<button>Ordenar por <i class="fa-solid fa-angle-down"></i></button>
 			<div class="box-options">
-				<ul>
-					<li><a href="">Nada</a></li>
-					<li><a href="menor_precio">De <b>menor</b> a <b>mayor</b> precio</a></li>
-					<li><a href="mayor_precio">De <b>mayor</b> a <b>menor</b> precio</a></li>
-					<li><a href="mas_viejo">Más <b>nuevo</b> primero</a></li>
-					<li><a href="mas_nuevo">Más <b>viejo</b> primero</a></li>
-				</ul>
+			  <ul>
+				<li><a href="{% url 'car_list' %}">Nada</a></li>
+				<li><a href="{% url 'car_list' %}?order_by=menor_precio">De <b>menor</b> a <b>mayor</b> precio</a></li>
+				<li><a href="{% url 'car_list' %}?order_by=mayor_precio">De <b>mayor</b> a <b>menor</b> precio</a></li>
+				<li><a href="{% url 'car_list' %}?order_by=mas_viejo">Más <b>nuevo</b> primero</a></li>
+				<li><a href="{% url 'car_list' %}?order_by=mas_nuevo">Más <b>viejo</b> primero</a></li>
+			  </ul>
 			</div>
-		</div>
+		  </div>
 
 	</div>
 	<div class="models">
@@ -40,7 +42,7 @@
 				<div class="title-model">{{ car.name }}</div>
 				<div class="price-and-year">{{ car.year }} | $ {{ car.price }}</div>
 				<div class="img-model-box">
-					<img src="{{ car.image.url }}" width="100"> 
+					<img src="{% if car.image %}{{ car.image.url }}{% else %} Sin imagen {% endif%}" width="100"> 
 				</div>
 				<div class="buttons-box">
 					{% if user.is_authenticated %}

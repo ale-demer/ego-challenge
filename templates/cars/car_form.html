@@ -13,7 +13,7 @@
 	<div class="card">
 		<h5 class="card-header"> Alta de nuevo vehículo</h5>
 
-        <form method="post" id="carForm">
+        <form enctype="multipart/form-data" method="post" id="carForm">
             {% csrf_token %}
             <div class="card-body">
                 {% crispy form %}

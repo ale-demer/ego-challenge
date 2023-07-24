@@ -13,7 +13,7 @@
 	<div class="card">
 		<h5 class="card-header"> Modificación de vehículo</h5>
 
-        <form method="post" id="carUpdateForm">
+        <form enctype="multipart/form-data" method="post" id="carUpdateForm">
             {% csrf_token %}
             <div class="card-body">
               {% crispy form %}

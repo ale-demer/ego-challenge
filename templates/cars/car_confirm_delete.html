@@ -1,0 +1,29 @@
+{% extends '_base.html' %} 
+
+{% block title %}ABM Vehículos{% endblock %} 
+
+{% block content %}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+	<h4 class="fw-bold py-3 mb-4">
+		<span class="text-muted fw-light">ABM /</span> Vehículos
+	</h4>
+
+	<div class="card text-center border border-danger">
+			<form method="post">{% csrf_token %}
+				<div class="card-header">
+					¿Estás seguro que querés borrar el registro? <u> Este cambio no se puede revertir.</u>
+				</div>
+				<div class="card-body">
+				<h5 class="card-title">Nombre: {{ object.name }}</h5>
+				<p class="card-text">Tìtulo: {{ object.title }}</p>
+				<p class="card-text">Precio: <b>$ {{ object.price }}</b></p>
+
+				<input type="submit" class="btn btn-danger mx-2" value="Confirmar">
+				<a class="btn btn-outline-secondary" href="{% url 'car_list' %}"> Volver</a>
+				</div>
+			</form>
+	</div>
+</div>
+
+{% endblock %}
