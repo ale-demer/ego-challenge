@@ -34,30 +34,28 @@
 
 	</div>
 	<div class="models">
-		<div class="wrapper-model">
-			
-			{% if cars %}
-				
-			{% for car in cars %}
-				
-			<div class="title-model">{{ car.name }}</div>
-			<div class="price-and-year">{{ car.year }} | $ {{ car.price }}</div>
-			<div class="img-model-box">
-					<img src="./{{ car.image }}" width="100"> 
+		{% if cars %}
+		{% for car in cars %}
+			<div class="wrapper-model">
+				<div class="title-model">{{ car.name }}</div>
+				<div class="price-and-year">{{ car.year }} | $ {{ car.price }}</div>
+				<div class="img-model-box">
+					<img src="{{ car.image.url }}" width="100"> 
 				</div>
 				<div class="buttons-box">
 					{% if user.is_authenticated %}
 						<div class="btn-admin-box">
-
+							<a href="{% url 'car_delete' car.id %}"><button class="btn-adm" style="background: rgb(211, 11, 11)">Borrar</button></a>
+							<a href="{% url 'car_change' car.id %}"><button class="btn-adm">Editar</button></a>
 						</div>
 					{% endif %}
-
 				</div>
 			</div>
-			{% endfor %}
-			{% else %}
-				<p>No hay autos cargados en este momento.</p>
-			{% endif %}
+		{% endfor %}
+		{% else %}
+			<p>No hay autos cargados en este momento.</p>
+		{% endif %}
+
 	</div>
 </div>
 {% endblock %}
