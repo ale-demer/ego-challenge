@@ -1,79 +1,63 @@
 {% extends '_base.html' %} 
 
-{% block title %}ABM Vehículos{% endblock %} 
+{% block title %}Descubrí todos los modelos{% endblock %} 
 
 {% block content %}
 
-<div class="container-xxl flex-grow-1 container-p-y">
-	<h4 class="fw-bold py-3 mb-4">
-		<span class="text-muted fw-light">ABM /</span> Vehículos
-	</h4>
+<h1>Descubrí todos los modelos</h1>
 
-	<div class="card">
-		<h5 class="card-header">
-			Listado de vehículos&nbsp;&nbsp;-&nbsp;&nbsp;<a
-				href="{% url 'car_add' %}"
-				type="button"
-				class="btn btn-sm btn-outline-secondary"
-			>
-				<span class="tf-icons bx bxs-plus-circle"></span>&nbsp; Agregar auto
-			</a>
-		</h5>
+<div class="box-models">
+	<div class="header-filter">
+		
+		<div class="category-filter">
+			<button>Filtrar por <i class="fa-solid fa-angle-down"></i></button>
+			<div class="filter-options">
+				<ul>
+					<li><a href="{% url 'car_list' %}">Todos</a></li>
 
-		<div class="table-responsive text-nowrap">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Nombre</th>
-						<th>Categoría</th>
-						<th>Titulo</th>
-						<th>Foto</th>
-					</tr>
-				</thead>
-				<tbody class="table-border-bottom-0">
-					{% for car in cars %}
-					<tr>
-						<td>
-							<strong><a href="{% url 'car_change' car.pk %}">{{ car.name }}</a></strong>
-						</td>
-						<td>{{ car.category }}</td>
-						<td>{{ car.title }}</td>
-						<td>{{ car.image }}</td>
-					</tr>
-					{% empty %}
-					<tr>
-						<td colspan="4">
-							No hay autos registrados por el momento.
-							<a href="{% url 'car_add' %}">Agregar auto</a>.
-						</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-			
-			</table>
-					  <nav>
-						{% if is_paginated %}
-							<ul class="pagination justify-content-center mt-2">
-								{% if page_obj.has_previous %}
-								<li class="page-item prev">
-									<a class="page-link" href="?page={{ page_obj.previous_page_number }}"><i class="tf-icon bx bx-chevron-left"></i></a>
-								  </li>
-								{% endif %}
-					
-								{% for i in paginator.page_range %}
-									<li {% if page_obj.number == i %} class="page-item active" {% endif %}>
-										<a class="page-link" href="?page={{i}}">{{ i }}</a>
-									</li>
-								{% endfor %}
-					
-								{% if page_obj.has_next %}
-									<li class="page-item next"><a class="page-link" href="?page={{ page_obj.next_page_number }}"><i class="tf-icon bx bx-chevron-right"></i></a></li>
-								{% endif %}
-							</ul>
-						{% endif %}
-					</nav>
+				</ul>
+			</div>
 		</div>
+
+		<div class="order-by">
+			<button>Ordenar por <i class="fa-solid fa-angle-down"></i></button>
+			<div class="box-options">
+				<ul>
+					<li><a href="">Nada</a></li>
+					<li><a href="menor_precio">De <b>menor</b> a <b>mayor</b> precio</a></li>
+					<li><a href="mayor_precio">De <b>mayor</b> a <b>menor</b> precio</a></li>
+					<li><a href="mas_viejo">Más <b>nuevo</b> primero</a></li>
+					<li><a href="mas_nuevo">Más <b>viejo</b> primero</a></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<div class="models">
+		<div class="wrapper-model">
+			
+			{% if cars %}
+				
+			{% for car in cars %}
+				
+			<div class="title-model">{{ car.name }}</div>
+			<div class="price-and-year">{{ car.year }} | $ {{ car.price }}</div>
+			<div class="img-model-box">
+					<img src="./{{ car.image }}" width="100"> 
+				</div>
+				<div class="buttons-box">
+					{% if user.is_authenticated %}
+						<div class="btn-admin-box">
+
+						</div>
+					{% endif %}
+
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+				<p>No hay autos cargados en este momento.</p>
+			{% endif %}
 	</div>
 </div>
-
 {% endblock %}
