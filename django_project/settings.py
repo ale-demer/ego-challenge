@@ -1,19 +1,21 @@
+import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY
-SECRET_KEY = "django-insecure-0peo@#x9jur3!h$ryje!$879xww8y1y66jx!%*#ymhg&jkozs2"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = True
+DEBUG = os.environ.get("DEBUG")
 
-# https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
-# https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = [
+
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -22,16 +24,23 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    # Third-party
+]
+
+THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "crispy_forms",
     "crispy_bootstrap5",
     "debug_toolbar",
-    # Local
+]
+
+LOCAL_APPS = [
     "accounts",
+    "cars",
     "pages",
 ]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
 MIDDLEWARE = [
@@ -45,7 +54,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
 # https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
 ROOT_URLCONF = "django_project.urls"
 
@@ -107,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "es"
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
 TIME_ZONE = "UTC"
@@ -171,3 +179,6 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
