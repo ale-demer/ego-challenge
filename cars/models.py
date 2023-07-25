@@ -1,6 +1,11 @@
 from django.db import models
 import os
 
+
+def get_img_upload_path(instance, filename):
+    return f"car_images/{instance.car.name}/{filename}"
+
+
 CATEGORY_CHOICES = (
     ("1", "Autos"),
     ("2", "Pickups y Comerciales"),
@@ -15,7 +20,10 @@ class Car(models.Model):
     description = models.TextField()
     year = models.IntegerField()
     price = models.IntegerField()
-    image = models.ImageField(upload_to="car_images", blank=True, null=True)
+    image = models.ImageField(upload_to="car_images", null=True)
+
+    class Meta:
+        ordering = ["category", "name"]
 
     def delete(self, *args, **kwargs):
         if os.path.isfile(self.image.path):
@@ -25,3 +33,17 @@ class Car(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class TechSheet(models.Model):
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name="tech_sheets")
+    heading = models.CharField(max_length=88)
+    paragraph = models.TextField()
+    image = models.ImageField(upload_to=get_img_upload_path)
+
+
+class TechSlide(models.Model):
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name="tech_slides")
+    heading = models.CharField(max_length=40)
+    paragraph = models.TextField()
+    image = models.ImageField(upload_to=get_img_upload_path)

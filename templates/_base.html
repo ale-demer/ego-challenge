@@ -40,8 +40,6 @@
     font-size: 20px;
   }
 </style>
-
-
   <header>
     <nav>
       <div class="logo">
@@ -49,7 +47,7 @@
       </div>
       <ul>
           <li><a href="{% url 'car_list' %}" class="activate">Modelos</a></li>
-          <!-- <li><a href="">Ficha de modelo</a></li> -->
+          <li><a href="">Ficha de modelo</a></li>
       </ul>
       <a class="menu-togle" id="btn-toggle-menu">
           <p id="menu-txt">Menú</p>
@@ -78,44 +76,44 @@
                   </ul>
     
                 {% else %}
-                  <form class="form-inline ml-auto">
-                    <a href="{% url 'account_login' %}">Iniciar sesión</a>
-                    <a href="{% url 'account_signup' %}">Crear cuenta</a>
-                  </form>
+                  <ul>
+                    <li><a href="{% url 'account_login' %}">Iniciar sesión</a></li>
+                    <li><a href="{% url 'account_signup' %}">Crear cuenta</a></li>
+                  </ul>
                 {% endif %}
             </ul>
             <svg xmlns="http://www.w3.org/2000/svg" width="338" height="1" viewBox="0 0 338 1" fill="none">
               <path d="M337.832 0.5H0.988281" stroke="#D1D1D1"/>
             </svg>
             <ul>
-                <li><a href="{% url 'car_list' %}">Modelos</a></li>
-                <li><a href="{% url 'car_list' %}">Servicios y Accesorios</a></li>
-                <li><a href="{% url 'car_list' %}">Financiación</a></li>
-                <li><a href="{% url 'car_list' %}">Reviews y Comunidad</a></li>
+                <li><a href="#">Modelos</a></li>
+                <li><a href="#">Servicios y Accesorios</a></li>
+                <li><a href="#">Financiación</a></li>
+                <li><a href="#">Reviews y Comunidad</a></li>
             </ul>
             <svg xmlns="http://www.w3.org/2000/svg" width="338" height="1" viewBox="0 0 338 1" fill="none">
               <path d="M337.832 0.5H0.988281" stroke="#D1D1D1"/>
             </svg>
             <ul>
-                <li><a href="{% url 'car_list' %}">Toyota Mobility Service</a></li>
-                <li><a href="{% url 'car_list' %}">Toyota Gazoo Racing</a></li>
-                <li><a href="{% url 'car_list' %}">Toyota Híbridos</a></li>
+                <li><a href="#">Toyota Mobility Service</a></li>
+                <li><a href="#">Toyota Gazoo Racing</a></li>
+                <li><a href="#">Toyota Híbridos</a></li>
             </ul>
             <svg xmlns="http://www.w3.org/2000/svg" width="338" height="1" viewBox="0 0 338 1" fill="none">
               <path d="M337.832 0.5H0.988281" stroke="#D1D1D1"/>
             </svg>
             <ul>
-                <li><a href="{% url 'car_list' %}">Concesionarios</a></li>
-                <li><a href="{% url 'car_list' %}">Test Drive</a></li>
-                <li><a href="{% url 'car_list' %}">Contacto</a></li>
+                <li><a href="#">Concesionarios</a></li>
+                <li><a href="#">Test Drive</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
             <ul style="margin-bottom: 200px; margin-top: 20px; background: #EFEEEF">
-                <li><a href="{% url 'car_list' %}">Actividades</a></li>
-                <li><a href="{% url 'car_list' %}">Servicios al Cliente</a></li>
-                <li><a href="{% url 'car_list' %}">Ventas Especiales</a></li>
-                <li><a href="{% url 'car_list' %}">Innovación</a></li>
-                <li><a href="{% url 'car_list' %}">Prensa</a></li>
-                <li><a href="{% url 'car_list' %}">Acerca de...</a></li>
+                <li><a href="#">Actividades</a></li>
+                <li><a href="#">Servicios al Cliente</a></li>
+                <li><a href="#">Ventas Especiales</a></li>
+                <li><a href="#">Innovación</a></li>
+                <li><a href="#">Prensa</a></li>
+                <li><a href="#">Acerca de...</a></li>
             </ul>
     </div>
   </div>

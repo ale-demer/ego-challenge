@@ -4,36 +4,54 @@
 
 {% block content %}
 
+<style>
+.active {
+	background: #dadada;
+	border-radius:40px;
+}
+
+.active-sort {
+	background: #d1d6d6;
+}
+</style>
+
 <h1>Descubrí todos los modelos</h1>
 
 <div class="box-models">
 	<div class="header-filter">
-		
 		<div class="category-filter">
 			<button>Filtrar por <i class="fa-solid fa-angle-down"></i></button>
 			<div class="filter-options">
 				<ul>
-					<li><a href="{% url 'car_list' %}">Todos</a></li>
-					<li><a href="{% url 'car_list' %}?category=1">Autos</a></li>
-					<li><a href="{% url 'car_list' %}?category=2">Pickups y Comerciales</a></li>
-					<li><a href="{% url 'car_list' %}?category=3">SUVs y Crossovers</a></li>
+					<li><a href="{% url 'car_list' %}" {% if not request.GET.category %}class="active"{% endif %}>Todos</a></li>
+					<li><a href="{% url 'car_list' %}?category=1" {% if request.GET.category == '1' %}class="active"{% endif %}>Autos</a></li>
+					<li><a href="{% url 'car_list' %}?category=2" {% if request.GET.category == '2' %}class="active"{% endif %}>Pickups y Comerciales</a></li>
+					<li><a href="{% url 'car_list' %}?category=3" {% if request.GET.category == '3' %}class="active"{% endif %}>SUVs y Crossovers</a></li>
 				</ul>
 			</div>
 		</div>
-
 		<div class="order-by">
 			<button>Ordenar por <i class="fa-solid fa-angle-down"></i></button>
 			<div class="box-options">
-			  <ul>
-				<li><a href="{% url 'car_list' %}">Nada</a></li>
-				<li><a href="{% url 'car_list' %}?order_by=menor_precio">De <b>menor</b> a <b>mayor</b> precio</a></li>
-				<li><a href="{% url 'car_list' %}?order_by=mayor_precio">De <b>mayor</b> a <b>menor</b> precio</a></li>
-				<li><a href="{% url 'car_list' %}?order_by=mas_viejo">Más <b>nuevo</b> primero</a></li>
-				<li><a href="{% url 'car_list' %}?order_by=mas_nuevo">Más <b>viejo</b> primero</a></li>
-			  </ul>
+				<ul>
+					<li {% if not request.GET.order_by %}class="active-sort" {% endif %}>
+						<a href="{% url 'car_list' %}">Nada</a>
+					</li>
+					<li {% if request.GET.order_by == 'menor_precio' %}class="active-sort" {% endif %}>
+						<a href="{% url 'car_list' %}?order_by=menor_precio">De <b>menor</b> a <b>mayor</b> precio</a>
+					</li>
+					<li {% if request.GET.order_by == 'mayor_precio' %}class="active-sort" {% endif %}>
+						<a href="{% url 'car_list' %}?order_by=mayor_precio">De <b>mayor</b> a <b>menor</b> precio</a>
+					</li>
+					<li {% if request.GET.order_by == 'mas_viejo' %}class="active-sort" {% endif %}>
+						<a href="{% url 'car_list' %}?order_by=mas_viejo">Más <b>nuevo</b> primero</a>
+					</li>
+					<li {% if request.GET.order_by == 'mas_nuevo' %}class="active-sort" {% endif %}>
+						<a href="{% url 'car_list' %}?order_by=mas_nuevo">Más <b>viejo</b> primero</a>
+					</li>
+				</ul>
 			</div>
-		  </div>
-
+		</div>
 	</div>
 	<div class="models">
 		{% if cars %}
@@ -51,13 +69,13 @@
 							<a href="{% url 'car_change' car.id %}"><button class="btn-adm">Editar</button></a>
 						</div>
 					{% endif %}
+					<a href="{% url 'car_sheet' car.id %}"><button class="view-model">Ver Modelo</button></a>
 				</div>
 			</div>
 		{% endfor %}
 		{% else %}
 			<p>No hay autos cargados en este momento.</p>
 		{% endif %}
-
 	</div>
 </div>
 {% endblock %}

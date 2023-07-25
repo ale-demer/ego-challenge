@@ -1,0 +1,44 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+    <section class="wrapper-sheet">
+        <div class="left">
+            <img src="{{ car.image.url }}">
+        </div>
+        <div class="right">
+            <div class="name-car">{{ car.name }}</div>
+            <div class="title">{{ car.title }}</div>
+            <div class="description">{{ car.description }}</div>
+        </div>
+    </section>
+
+    <section class="tech-sheet">
+        {% for sheet in car.tech_sheets.all %}
+            <div class="line {% cycle 'right' 'left' as row_css %}">
+                {% if row_css == 'right' %}
+                    <div class="right">
+                        <img src="{{ sheet.image.url }}">
+                    </div>
+                    <div class="left">
+                        <div class="title">{{ sheet.heading }}</div>
+                        <div class="description">
+                            {{ sheet.paragraph }}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="left">
+                        <div class="title">{{ sheet.heading }}</div>
+                        <div class="description">
+                            {{ sheet.paragraph }}
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="{{ sheet.image.url }}">
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}

@@ -8,19 +8,19 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 	<h4 class="fw-bold py-3 mb-4">
 		<span class="text-muted fw-light">ABM /</span> Vehículos
+        <a href="{% url 'sheet_create' car_id=car.id %}" class="btn btn-primary btn-sm">Agregar especificación técnica</a>
+        <a href="{% url 'slide_create' car_id=car.id %}" class="btn btn-info btn-sm">Agregar foto de galería</a>
 	</h4>
 
 	<div class="card">
 		<h5 class="card-header"> Modificación de vehículo</h5>
-
         <form enctype="multipart/form-data" method="post" id="carUpdateForm">
             {% csrf_token %}
             <div class="card-body">
-              {% crispy form %}
-                  <button type="submit" class="btn btn-primary btn-block mx-2 my-2">Guardar</button>
-                  <a href="{% url 'car_list' %}"> Volver</a>
-              </div>
-
+            {% crispy form %}
+                <button type="submit" class="btn btn-primary btn-block mx-2 my-2">Guardar</button>
+                <a href="{% url 'car_list' %}"> Volver</a>
+            </div>
         </form>
 	</div>
 </div>
