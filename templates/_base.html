@@ -46,8 +46,8 @@
           <img src="{% static 'images/logo_ego.png' %}" alt="">
       </div>
       <ul>
-          <li><a href="{% url 'car_list' %}" class="activate">Modelos</a></li>
-          <li><a href="">Ficha de modelo</a></li>
+          <li><a href="{% url 'car_list' %}" {% if request.path == '/cars/' %}class="activate"{% endif %}>Modelos</a></li>
+          <li><a href="" {% if '/cars/sheet' in request.path %}class="activate"{% endif %}>Ficha de modelo</a></li>
       </ul>
       <a class="menu-togle" id="btn-toggle-menu">
           <p id="menu-txt">Menú</p>

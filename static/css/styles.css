@@ -45,7 +45,7 @@ header {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    margin-bottom: 3rem
+    margin-bottom: 2rem
 }
 
 header .logo {
@@ -256,7 +256,7 @@ h1 {
     line-height: 57px;
     letter-spacing: -1px;
     color: #373737;
-    margin-bottom: 1em
+    margin-bottom: 35px;
 }
 
 .box-models {
@@ -399,8 +399,6 @@ h1 {
     display: flex;
     max-width: 1200px;
     width: 100%;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -670,8 +668,6 @@ form button {
 }
 
 .wrapper-sheet .left {
-    width: 530px;
-    height: 400px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -684,7 +680,9 @@ form button {
 }
 
 .wrapper-sheet .left img {
-    width: 350px
+    width: 667px;
+    height: 314px;
+    flex-shrink: 0;
 }
 
 .wrapper-sheet .right {
@@ -826,7 +824,7 @@ form button {
     font-family: "Montserrat";
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 27px;
     letter-spacing: -0.1px
 }

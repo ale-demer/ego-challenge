@@ -2,6 +2,27 @@
 
 {% block content %}
 
+<style>
+.container {
+    max-width: 1200px;
+}
+
+
+.carousel-cell {
+  margin-right: 30px;
+  border-radius: 5px;
+}
+
+/* gallery focus */
+.flickity-enabled:focus .flickity-viewport {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
     <section class="wrapper-sheet">
         <div class="left">
             <img src="{{ car.image.url }}">
@@ -13,7 +34,18 @@
         </div>
     </section>
 
-    <section class="tech-sheet">
+    <!-- Flickity HTML init -->
+    <div class="carousel mb-5" data-flickity>
+        {% for slide in car.tech_slides.all %}
+            <div class="carousel-cell">
+                <img src="{{ slide.image.url }}" style="width: 301.425px;  height: auto;">
+                <p style="font-size: 20px; max-width: 301.425px; margin-top: 10px"><b>{{ slide.heading }}</b></p>
+                <p style="font-size: 14px; max-width: 301.425px;">{{ slide.paragraph }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <section class="tech-sheet mt-3">
         {% for sheet in car.tech_sheets.all %}
             <div class="line {% cycle 'right' 'left' as row_css %}">
                 {% if row_css == 'right' %}

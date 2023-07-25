@@ -41,9 +41,15 @@ class TechSheet(models.Model):
     paragraph = models.TextField()
     image = models.ImageField(upload_to=get_img_upload_path)
 
+    def __str__(self):
+        return f"{self.car.name} | {self.heading}"
+
 
 class TechSlide(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name="tech_slides")
     heading = models.CharField(max_length=40)
     paragraph = models.TextField()
     image = models.ImageField(upload_to=get_img_upload_path)
+
+    def __str__(self):
+        return f"{self.car.name} | {self.heading}"
