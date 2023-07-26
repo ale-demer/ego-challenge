@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView, DetailView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-
+from django.urls import reverse
 
 from .models import Car, TechSheet, TechSlide
 from .forms import CarForm, CarUpdateForm
@@ -45,7 +45,9 @@ class CarUpdateView(UpdateView):
     model = Car
     form_class = CarUpdateForm
     template_name = "cars/car_update_form.html"
-    success_url = reverse_lazy("car_list")
+
+    def get_success_url(self):
+        return reverse("car_sheet", kwargs={"pk": self.object.pk})
 
 
 @method_decorator(login_required, name="dispatch")

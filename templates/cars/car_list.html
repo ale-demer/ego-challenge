@@ -56,7 +56,7 @@
 	<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1" viewBox="20 0 960 1" fill="none">
 		<path d="M0.5 0.5H1139" stroke="#D8D8D8" stroke-linecap="square"/>
 		</svg>
-	<div class="models grid-container">
+	<div class="models grid-container clearfix">
 		{% if cars %}
 		{% for car in cars %}
 			<div class="wrapper-model">
@@ -66,12 +66,6 @@
 					<img src="{% if car.image %}{{ car.image.url }}{% else %} Sin imagen {% endif%}" width="100"> 
 				</div>
 				<div class="buttons-box">
-					{% if user.is_authenticated %}
-						<div class="btn-admin-box">
-							<a href="{% url 'car_delete' car.id %}"><button class="btn-adm" style="background: rgb(211, 11, 11)">Borrar</button></a>
-							<a href="{% url 'car_change' car.id %}"><button class="btn-adm">Editar</button></a>
-						</div>
-					{% endif %}
 					<a href="{% url 'car_sheet' car.id %}"><button class="view-model">Ver Modelo</button></a>
 				</div>
 			</div>

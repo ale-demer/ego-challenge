@@ -30,6 +30,14 @@
 
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    {% if user.is_authenticated %}
+    <div class="admin-box" style="text-align: center; margin-bottom: 12px">
+        <a href="{% url 'car_change' car.id %}" class="btn btn-primary btn-sm">Editar</a>
+        <a href="{% url 'sheet_create' car_id=car.id %}" class="btn btn-secondary btn-sm">Agregar especificación técnica</a>
+        <a href="{% url 'slide_create' car_id=car.id %}" class="btn btn-secondary btn-sm">Agregar foto de galería</a>
+        <a href="{% url 'car_delete' car.id %}" class="btn btn-danger btn-sm">Borrar</a>
+    </div>
+    {% endif %}
 
     <section class="wrapper-sheet">
         <div class="left">
@@ -42,7 +50,7 @@
         </div>
     </section>
 
-    <!-- Flickity HTML init -->
+    {% if car.tech_slides.all %}
     <div class="carousel mb-5" data-flickity='{ "cellAlign": "left", "contain": true }'>
         {% for slide in car.tech_slides.all %}
             <div class="carousel-cell">
@@ -52,6 +60,7 @@
             </div>
         {% endfor %}
     </div>
+{% endif %}
 
     <section class="tech-sheet mt-3">
         {% for sheet in car.tech_sheets.all %}
