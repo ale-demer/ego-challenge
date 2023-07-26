@@ -7,9 +7,9 @@
     max-width: 1200px;
 }
 
-
 .carousel-cell {
   margin-right: 30px;
+  margin-left: 30px;
   border-radius: 5px;
 }
 
@@ -17,6 +17,14 @@
 .flickity-enabled:focus .flickity-viewport {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
+}
+
+/* dots are lines */
+.flickity-page-dots .dot {
+  height: 4px;
+  width: 40px;
+  margin: 0;
+  border-radius: 0;
 }
 </style>
 
@@ -35,7 +43,7 @@
     </section>
 
     <!-- Flickity HTML init -->
-    <div class="carousel mb-5" data-flickity>
+    <div class="carousel mb-5" data-flickity='{ "cellAlign": "left", "contain": true }'>
         {% for slide in car.tech_slides.all %}
             <div class="carousel-cell">
                 <img src="{{ slide.image.url }}" style="width: 301.425px;  height: auto;">

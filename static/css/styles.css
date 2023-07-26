@@ -93,7 +93,8 @@ header nav ul li {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    position: relative
+    position: relative;
+    margin-right: 20px;
 }
 
 header nav ul li:hover {
@@ -288,7 +289,8 @@ h1 {
     -ms-flex-pack: justify;
     justify-content: space-between;
     -ms-flex-wrap: wrap;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    margin-bottom: 15px;
 }
 
 .box-models .header-filter p {
@@ -503,6 +505,38 @@ h1 {
     animation: showOpacity 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards
+}
+
+/* Estilos generales */
+.box-models .models.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(269px, 1fr));
+    gap: 20px;
+}
+
+.box-models .models .wrapper-model {
+    max-width: 269px;
+    margin: 0 auto;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .box-models .models.grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .box-models .models.grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+/* Añadimos una nueva Media Query para pantallas con un ancho máximo de 380px */
+@media (max-width: 380px) {
+    .box-models .models.grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
 }
 
 @-webkit-keyframes hiddenOpacity {
