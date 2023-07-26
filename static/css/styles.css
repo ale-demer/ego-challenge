@@ -186,7 +186,6 @@ header nav .menu-toggle i {
 
 .menu-bg .box-right .box-links {
     margin-top: 100px;
-    padding: 0px 40px;
     height: 700px;
     width: 100%;
     overflow-y: scroll;
@@ -197,6 +196,7 @@ header nav .menu-toggle i {
 .menu-bg .box-right .box-links ul {
     margin-bottom: 10px;
     margin-top: 10px;
+    padding: 0px 40px;
 }
 
 .menu-bg .box-right .box-links ul li {
@@ -516,6 +516,10 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     flex-grow: 1;
+}
+
+.gray-background {
+    background-color: #EFEEEF;
 }
 
 /* Estilos responsivos */
