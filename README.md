@@ -61,3 +61,6 @@ Solo estando logueado, al entrar a la ficha técnica de algún auto aparece en l
 
 A través del panel de Admin: (localhost:8000/admin).
 
+## Related
+
+Boilerplate: [Djangox](https://github.com/wsvincent/djangox)

@@ -22,13 +22,13 @@ class CarListView(ListView):
             queryset = queryset.filter(category=category)
 
         if order_by == "menor_precio":
-            queryset = queryset.order_by("price")
+            queryset = queryset.order_by("price", "year")
         elif order_by == "mayor_precio":
-            queryset = queryset.order_by("-price")
+            queryset = queryset.order_by("-price", "-year")
         elif order_by == "mas_viejo":
-            queryset = queryset.order_by("-year")
+            queryset = queryset.order_by("-year", "price")
         elif order_by == "mas_nuevo":
-            queryset = queryset.order_by("year")
+            queryset = queryset.order_by("year", "-price")
 
         return queryset
 
@@ -84,7 +84,7 @@ class TechSheetCreateView(CreateView):
         return initial
 
     def get_success_url(self):
-        return reverse_lazy("car_list")
+        return reverse("car_sheet", kwargs={"pk": self.kwargs.get("car_id")})
 
 
 @method_decorator(login_required, name="dispatch")
@@ -103,4 +103,4 @@ class TechSlideCreateView(CreateView):
         return initial
 
     def get_success_url(self):
-        return reverse_lazy("car_list")
+        return reverse("car_sheet", kwargs={"pk": self.kwargs.get("car_id")})

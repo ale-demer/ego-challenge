@@ -33,7 +33,7 @@
 		<div class="order-by">
 			<button>Ordenar por <i class="fa-solid fa-angle-down"></i></button>
 			<div class="box-options">
-				<ul>
+				<ul style="padding-left: 0">
 					<li {% if not request.GET.order_by %}class="active-sort" {% endif %}>
 						<a href="{% url 'car_list' %}">Nada</a>
 					</li>
